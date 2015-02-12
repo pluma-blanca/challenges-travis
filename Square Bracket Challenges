@@ -1,0 +1,42 @@
+## Square Bracket Challenges
+
+
+# Given a vector of random numbers (picked from a normal distribution) 
+# vec <- rnorm(100), retrieve the 5th, 10th and 15th elements from it.
+
+vec <- rnorm(100)
+vec[5]
+vec[10]
+vec[15]
+
+vec[c(5,10,15)]
+
+
+#R has a special vector called letters that stores the letter of the alphabet.
+#Use it in combination with the function rep() to 
+#create a vector of 100 that contains only a and e.
+
+?rep
+
+letters
+
+
+letters[1]
+letters[5]
+rep.int(letters[1],30)
+rep.int(letters[5],70)
+
+a_e_vector <- c(rep.int(letters[1],30), rep.int(letters[5],70))
+
+a_e_vector
+
+# Starting with vec <- 1:100, and using the function seq() 
+#create a vector that doesn't contain the multiples of 5 (i.e., 5, 10, ... 100).
+
+?seq
+
+vec <- 1:100
+vec
+
+vec_multiples <- vec[-seq(0,100,5)]
+vec_multiples
