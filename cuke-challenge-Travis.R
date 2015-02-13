@@ -122,3 +122,20 @@ hol_nom_merge <- merge(hol, nom, all.x=TRUE)
 
 nrow(hol)
 nrow(hol_nom_merge)
+
+##Create a data frame that contains the information for the specimens identified 
+##with an invalid species name (content of the column Status is not NA)? 
+##(hint: specimens identified only with a genus name shouldn't be included in this count.)
+
+Rm_NA <- hol_nom_merge[!is.na(hol_nom_merge$Status), ]
+
+invalid_species <- Rm_NA[Rm_NA$Valid == "no", ]
+
+
+##Select only the columns: idigbio.uuid, dwc.genus, dwc.specificEpithet, dwc.institutionCode, 
+##dwc.catalogNumber from this data frame and export the data as a CSV file (using the function write.csv)
+##named holothuriidae-invalid.csv
+
+invalid_species2 <- invalid_species[ ,c("idigbio.uuid", "dwc.genus", "dwc.specificEpithet", "dwc.institutionCode", "dwc.catalogNumber")]
+
+write.csv(invalid_species2, file="data/holothuriidae-invalid.csv")
