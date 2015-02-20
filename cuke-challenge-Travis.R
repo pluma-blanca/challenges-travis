@@ -50,8 +50,8 @@ min(hol$dwc.year[-c(2272, 93, 272, 2182,2226,2815,2879)], na.rm=TRUE) ## I don't
 
 ##What proportion of the specimens in this data frame were collected between the years 2006 and 2014 (included)?
 
-table(hol$dwc.year)
-sum(table(hol$dwc.year))
+morethan2005 <- table(hol$dwc.year[hol$dwc.year>2005])   ### you can sum the elements after subsetting 
+sum(morethan2005)
 
 table(hol$dwc.year[,c(2006,2014)])  ##979
 
