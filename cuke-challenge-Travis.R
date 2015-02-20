@@ -51,20 +51,14 @@ min(hol$dwc.year[-c(2272, 93, 272, 2182,2226,2815,2879)], na.rm=TRUE) ## I don't
 ##What proportion of the specimens in this data frame were collected between the years 2006 and 2014 (included)?
 
 morethan2005 <- table(hol$dwc.year[hol$dwc.year>2005])   ### you can sum the elements after subsetting 
-sum(morethan2005)
-
-table(hol$dwc.year[,c(2006,2014)])  ##979
-
+sum(morethan2005) ## the answer is 1472
 length(hol$dwc.year)    ##2984
-
-979/2984   ###.3280831    ##There must be a better way to do this
-
-prop <- hol$dwc.year
-
-prop > 2005
-
-mean(prop > 2005)   ##didn't work, got NA
-
+1472/2984   ###.3280831 was your original answer   ##There must be a better way to do this
+### I got 0.4932976  
+#prop <- hol$dwc.year
+#prop > 2005
+#mean(prop > 2005)   ##didn't work, got NA
+#I commented these out, do not know what you were trying to do.
 
 
 ##The function nzchar() on a vector returns TRUE for the positions of the vectors that are not empty, and FALSE otherwise. For instance, nzchar(c("a", "b", "", "", "e")) would return the vector c(TRUE, TRUE, FALSE, FALSE, TRUE). The column dwc.class is supposed to contain the Class information for the specimens (here they should all be "Holothuroidea"). However, it is missing for some. Use the function nzchar to answer:
@@ -72,10 +66,8 @@ mean(prop > 2005)   ##didn't work, got NA
 ##For the specimens where the information is missing, replace it with the information for their (again, they should all be "Holothuroidea").
 
 nzchar(hol$dwc.class)
-
 summary(nzchar(hol$dwc.class))
-
-sum(nzchar(hol$dwc.class))
+sum(nzchar(hol$dwc.class))  ### why sum it?
 
 ## 50 are empty
 
@@ -83,9 +75,9 @@ hol$dwc.class[] <- "Holothuroidea"
 
 nzchar(hol$dwc.class)
 
-summary(nzchar(hol$dwc.class))
+summary(nzchar(hol$dwc.class)) ## Done here! 
 
-sum(nzchar(hol$dwc.class))
+#sum(nzchar(hol$dwc.class))  this seems superfluous
 
 ##Using the nom data frame, and the columns Subgenus.current and Genus.current, 
 ##which of the genera listed has/have subgenera?
@@ -118,8 +110,7 @@ nom <- cbind(nom, genus_species=genus_species_current)
 
 ##Use merge() to combine hol and nom (hint: you will need to use the all.x argument,
 ##read the help to figure it out, and check that the resulting data frame has the same number of rows as hol).
-
-?merge()
+#?merge()
 
 hol_nom_merge <- merge(hol, nom, all.x=TRUE)
 
