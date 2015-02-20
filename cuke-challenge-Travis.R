@@ -36,21 +36,24 @@ summary(hol$dwc.year)
 min(hol$dwc.year, na.rm=TRUE)
 
 which(hol$dwc.year==91)
-
-min(hol$dwc.year[-2272], na.rm=TRUE)
+#How about trying?
+table(hol$dwc.year)
+## This shows that 2 specimens were collected in 1902
+min(hol$dwc.year[-2272], na.rm=TRUE) # where did the -2272 come from?
 ## answer 1991?
 
 which(hol$dwc.year==91)
 
-min(hol$dwc.year[-c(2272, 93, 272, 2182,2226,2815,2879)], na.rm=TRUE)
+min(hol$dwc.year[-c(2272, 93, 272, 2182,2226,2815,2879)], na.rm=TRUE) ## I don't understand this.
 
 ## or maybe 1902 actually
 
 ##What proportion of the specimens in this data frame were collected between the years 2006 and 2014 (included)?
 
 table(hol$dwc.year)
+sum(table(hol$dwc.year))
 
-length(hol$dwc.year[-seq(0,2005)])  ##979
+table(hol$dwc.year[,c(2006,2014)])  ##979
 
 length(hol$dwc.year)    ##2984
 
